@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Project One</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="enter_ssid">Enter SSID</string>
+    <string name="lookup">Lookup</string>
+</resources>

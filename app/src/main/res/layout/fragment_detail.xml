@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    style="@style/Center" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/wifi_icon"
+            style="@style/WifiIcon"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/heading"
+            android:text="@string/hello_world"
+            style="@style/MainHeading"
+            android:layout_below="@id/wifi_icon" />
+
+        <TextView
+            android:id="@+id/subheading"
+            android:text="@string/hello_world"
+            style="@style/SubHeading" />
+
+    </RelativeLayout>
+
+</LinearLayout>
