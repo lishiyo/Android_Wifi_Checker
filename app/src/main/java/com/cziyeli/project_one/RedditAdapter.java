@@ -48,26 +48,32 @@ public class RedditAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
+
+        /*
+         ViewHolder pattern - do view-finding in VH and set VH inside view tag
+         convertView == reused view (view that just fell off screen), already inflated
+         Avoid expensive inflation and view-finding
+         */
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.list_item_reddit_popular, parent, false);
-            // create a new "Holder" with subviews
             holder = new ViewHolder();
             holder.headerTextView = (TextView) convertView.findViewById(R.id.header_text);
             holder.subTextView = (TextView) convertView.findViewById(R.id.sub_text);
             holder.thumbnailImageView = (ImageView) convertView.findViewById(R.id.img_thumbnail);
-            // hang onto this holder for future recyclage
+
             convertView.setTag(holder);
-        } else { // skip all the expensive inflation and view-finding
+        } else {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        // Get new data and reset this view
         PopularSubreddit subreddit = (PopularSubreddit) getItem(position);
         String title = subreddit.data.mTitle;
-        holder.headerTextView.setText(title.toUpperCase());
         String public_description = subreddit.data.mPublicDescription;
-        holder.subTextView.setText(public_description);
-
         String imageURL = subreddit.data.mHeaderImg;
+
+        holder.headerTextView.setText(title.toUpperCase());
+        holder.subTextView.setText(public_description);
 
         if (imageURL != null) {
             // Use Picasso to load the image, with placeholder during loading

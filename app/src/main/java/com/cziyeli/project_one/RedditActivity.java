@@ -147,6 +147,7 @@ public class RedditActivity extends ListActivity implements AdapterView.OnItemCl
         // runs on main thread
         protected void onPostExecute(PopularSubreddit[] subreddits) {
             if (subreddits != null) {
+                // Instead of creating new adapter, update its data
                 mRedditAdapter.updateData(subreddits);
 //                mRedditAdapter = new RedditAdapter(getBaseContext(), subreddits);
 //                setListAdapter(mRedditAdapter);
